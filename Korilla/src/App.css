@@ -5,6 +5,7 @@ ul{
 
 li{
   padding: 10px;
+  
 }
 
 .customerName{
@@ -14,5 +15,5 @@ li{
 .receiptsBody{
   border: 1px solid black;
   margin: 0 auto;
-  max-width: fit-content;
+  display: inline-block;
 }
