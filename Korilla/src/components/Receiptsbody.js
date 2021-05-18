@@ -51,6 +51,7 @@ const Receiptsbody = () => {
     paid: true
   }])
 
+  
     return (
       <div>
         <ul  key={nanoid()}>
