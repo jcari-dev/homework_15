@@ -55,7 +55,7 @@ const Receiptsbody = () => {
       <div>
         <ul  key={nanoid()}>
         {receipts.map(receipt => (
-          receipt.paid ? <div className="receiptsBody">
+          receipt.paid ? null : <div className="receiptsBody">
                     <li key={nanoid()}>{receipt.person}</li>
                     {receipt.order.map(order =>(
                     <div>
@@ -67,7 +67,7 @@ const Receiptsbody = () => {
                           <li key={nanoid()}>Cost: {order.cost}</li>
                     </div>
                     ))}
-          </div> : null
+          </div> 
 
         ))}
         </ul>
