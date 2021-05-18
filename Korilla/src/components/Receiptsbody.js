@@ -1,70 +1,142 @@
 import React from 'react'
 import { nanoid } from 'nanoid'
-import receipt1 from '../justjs/receipts'
+import {useState} from 'react'
 
-import receipts from '../justjs/receipts'
 
 
 const Receiptsbody = () => {
-    
+  const [receipts, setreceipt] = useState([{
+      person: 'Karolin',
+      order: [{
+        main: 'Burrito',
+        protein: 'Organic Tofu',
+        rice: 'Purple Rice',
+        sauce: 'Green Crack',
+        toppings: [
+          'Baby Bok Choy', 'Cucumber Kimchi'
+        ],
+        drink: 'Korchata',
+        cost: 22
+      }],
+      paid: false
+    },
+{
+    person: 'Jerrica',
+    order: [{
+      main: 'Rice Bowl',
+      protein: 'Ginger Soy Chix',
+      rice: 'Sticky Rice',
+      sauce: 'Korilla',
+      toppings: [
+        'Yuzu Pickled Sweet Pepper', 'Kale'
+      ],
+      drink: 'Korchata',
+      cost: 19
+    }],
+    paid: false
+  },
+ {
+    person: 'Matt',
+    order: [{
+      main: 'Salad Bowl',
+      protein: 'Organic Tofu',
+      rice: 'none',
+      sauce: "K'lla",
+      toppings: [
+        'Blue Potato Salad', 'Pico De Gallo', 'Red Kimchi'
+      ],
+      drink: 'Sparkling Blood Orange Soda',
+      cost: 20
+    }],
+    paid: true
+  }])
+
     return (
-        <div>
-        <div className="receiptsBody">
-         <ul> <p className="customerName">{receipt1.receipt1.person}</p>
-          <li>Main: {receipt1.receipt1.order.main}</li>
-          <li>Protein: {receipt1.receipt1.order.protein}</li>
-          <li>Rice: {receipt1.receipt1.order.rice}</li>
-          <li>Sauce: {receipt1.receipt1.order.sauce}</li>
-          <ul> Toppings: 
-            <li>{receipt1.receipt1.order.toppings[0]}</li>
-              <li>{receipt1.receipt1.order.toppings[1]}</li>
-          </ul>
-          <li>Drink: {receipt1.receipt1.order.drink}</li>
-          <li>Cost: {receipt1.receipt1.order.cost}</li>
-        </ul> 
-        </div>
-        <div className="receiptsBody">
-        <ul> <p className="customerName">{receipt1.receipt2.person}</p>
-          <li>Main: {receipt1.receipt2.order.main}</li>
-          <li>Protein: {receipt1.receipt2.order.protein}</li>
-          <li>Rice: {receipt1.receipt2.order.rice}</li>
-          <li>Sauce: {receipt1.receipt2.order.sauce}</li>
-          <ul> Toppings: 
-            <li>{receipt1.receipt2.order.toppings[0]}</li>
-              <li>{receipt1.receipt2.order.toppings[1]}</li>
-          </ul>
-          <li>Drink: {receipt1.receipt2.order.drink}</li>
-          <li>Cost: {receipt1.receipt2.order.cost}</li>
-        </ul> 
-        </div>
-        <div className="receiptsBody">
-        <ul> <p className="customerName">{receipt1.receipt3.person}</p>
-          <li>Main: {receipt1.receipt3.order.main}</li>
-          <li>Protein: {receipt1.receipt3.order.protein}</li>
-          <li>Rice: {receipt1.receipt3.order.rice}</li>
-          <li>Sauce: {receipt1.receipt3.order.sauce}</li>
-          <ul> Toppings: 
-            <li>{receipt1.receipt3.order.toppings[0]}</li>
-              <li>{receipt1.receipt3.order.toppings[1]}</li>
-              <li>{receipt1.receipt3.order.toppings[2]}</li>
-          </ul>
-          <li>Drink: {receipt1.receipt3.order.drink}</li>
-          <li>Cost: {receipt1.receipt3.order.cost}</li>
-        </ul> 
-        </div>
-        </div>
+      <div>
+        <ul  key={nanoid()}>
+        {receipts.map(receipt => (
+          receipt.paid ? <div className="receiptsBody">
+                    <li key={nanoid()}>{receipt.person}</li>
+                    {receipt.order.map(order =>(
+                    <div>
+                          <li key={nanoid()}>Main: {order.main}</li>
+                          <li key={nanoid()}>Protein: {order.protein}</li>
+                          <li key={nanoid()}>Rice: {order.rice}</li>
+                          <li key={nanoid()}>Sauce: {order.sauce}</li>
+                          <li key={nanoid()}>Drink: {order.drink}</li>
+                          <li key={nanoid()}>Cost: {order.cost}</li>
+                    </div>
+                    ))}
+          </div> : null
+
+        ))}
+        </ul>
+      </div>
     )
 }
+
+
 
 export default Receiptsbody;
 
 
-        // <div className="receiptBody">
-        // <ul> {receipts.map((recep)=>{
-            
-        // })}
+// HOW TO SHOW THE TOPPINGS WITHOUT REPEATING IT BY THE AMOUNT OF TOPPINGS 
 
-        // </ul>
-        
-        // </div>
+
+
+
+
+
+// import React from 'react'
+// import { nanoid } from 'nanoid'
+// import {useState} from 'react'
+
+
+
+// const Receiptsbody = () => {
+//   const [receipts, setreceipt] = useState([{
+//     person: 'Karolin',
+//     order: [{
+//       main: 'Burrito',
+//       protein: 'Organic Tofu',
+//       rice: 'Purple Rice',
+//       sauce: 'Green Crack',
+//       toppings: [
+//         'Baby Bok Choy', 'Cucumber Kimchi'
+//       ],
+//       drink: 'Korchata',
+//       cost: 22
+//     }],
+//     paid: false
+//   }])
+
+//     return (
+//       <div>
+//         <ul>
+//         {receipts.map(receipt => {
+         
+//           return receipt.order.map(order =>{
+            
+//             return order.toppings.map(toppings =>(
+//               <div>
+//                 {receipt.person}
+//                 <li>{order.main}</li>
+//               <li>{order.protein}</li>
+//               <li>{order.rice}</li>
+//               <li>{order.sauce}</li>
+//                 <li>{toppings}</li>
+//                 </div>
+              
+//           ))
+//           })
+//         })}
+//         </ul>
+//       </div>
+//     )
+// }
+
+
+
+// export default Receiptsbody;
+
 
